@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require('path');
+const notes = require('./db/db.json');
+const uuid = require('./helpers/uuid');
+const { getNotes, saveNotes } = require('./helpers/notesIO');
 
 const PORT = 3001;
 
@@ -11,25 +14,51 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-// GET request for index.html
+// GET resquest for index.html
 app.get('/', (req, res) =>
-  console.info("received get request for /")
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 // GET request for notes.html
 app.get('/notes', (req, res) =>
-console.info("received get request for /notes")
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 // GET request for notes
 app.get('/api/notes', (req, res) => {
-  console.info("received get request for /api/notes")
+  res.json(getNotes());
 
 });
 
+
 // POST request to add a note
 app.post('/api/notes', (req, res) => {
-  console.info("received get request for /api/notes")
+
+  currentNotes = getNotes();
+
+  const {title, text } = req.body;
+
+  if (title && text) {
+
+    const newNote = {
+      id: uuid(),
+      title,
+      text,
+    };
+    currentNotes.push(newNote);
+
+    saveNotes(currentNotes);
+
+    const response = {
+      status: 'success',
+      body: newNote,
+    };
+
+    res.json(response);
+  }
+  else {
+    res.json('Error in saving new note');
+  }
 });
 
 app.listen(PORT, () =>
