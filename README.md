@@ -19,7 +19,7 @@ npm install
 
 ## Usage
 Execute 'node server.js' to start up Express server. Then open a browser and navigate to http://localhost:3001/
-Next, click on the "Get Started" button and use interface to view existing, add new, ad delete notes.
+Next, click on the "Get Started" button and use interface to view existing, add new, and delete notes.
 ## Contributing
 Please contribute to this project:
 * [Submit bugs and feature requests](https://github.com/lstillwe/note-taker/issues), and help us verify as they are checked in
