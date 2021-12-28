@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// retrieve the notes from the DB
 const getNotes = () => {
 
     var data = fs.readFileSync('./db/db.json','utf8')
@@ -14,6 +15,7 @@ const getNotes = () => {
     return notes;
 }
     
+// save provided notes array to the DB
 const saveNotes = (notes) => {
 
     try {
