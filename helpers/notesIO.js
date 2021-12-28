@@ -14,7 +14,7 @@ const getNotes = () => {
     return notes;
 }
     
-const saveNote = (notes) => {
+const saveNotes = (notes) => {
 
     try {
         fs.writeFileSync('./db/db.json', JSON.stringify(notes)) 

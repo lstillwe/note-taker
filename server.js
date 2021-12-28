@@ -30,7 +30,6 @@ app.get('/api/notes', (req, res) => {
 
 });
 
-
 // POST request to add a note
 app.post('/api/notes', (req, res) => {
 
@@ -59,6 +58,30 @@ app.post('/api/notes', (req, res) => {
   else {
     res.json('Error in saving new note');
   }
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+
+  var noteId = req.params.id
+  var notes = getNotes();
+  var noteToDelete = notes.filter(function(item) { return item.id === noteId; });
+  var index = notes.findIndex(function(item, i) {
+    return item.id === noteId
+  });
+
+  if (index > -1) {
+    notes.splice(index, 1);
+  }
+
+  saveNotes(notes);
+
+  const response = {
+    status: 'success',
+    body: noteToDelete,
+  };
+
+  res.json(response);
+
 });
 
 app.listen(PORT, () =>
