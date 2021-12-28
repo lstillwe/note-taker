@@ -25,7 +25,7 @@ Please contribute to this project:
 * [Submit bugs and feature requests](https://github.com/lstillwe/note-taker/issues), and help us verify as they are checked in
 
 ## Video
-[Walk-through Video Link](https://drive.google.com/file/d/10Nj9xDgygycAkktwdgYIuHmu4Nt14IUE/view?usp=sharing)
+[Walk-through Video Link](https://drive.google.com/file/d/1FN4k_en-bjWn6yZbFF6r5kdhqo8wg8HU/view?usp=sharing)
 
 ## Tests
 No tests have been provided

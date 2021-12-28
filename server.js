@@ -33,10 +33,14 @@ app.get('/api/notes', (req, res) => {
 // POST request to add a note
 app.post('/api/notes', (req, res) => {
 
+  // get the current notes in the DB
   currentNotes = getNotes();
 
+  // save the title and text data from the new note to add
   const {title, text } = req.body;
 
+  // if both title and text are present,
+  // create a new note object and add it to the current notes array
   if (title && text) {
 
     const newNote = {
@@ -46,8 +50,10 @@ app.post('/api/notes', (req, res) => {
     };
     currentNotes.push(newNote);
 
+    // save the updated notes to the DB
     saveNotes(currentNotes);
 
+    // send back a success response
     const response = {
       status: 'success',
       body: newNote,
@@ -60,21 +66,29 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+// DELETE request to remove a note
 app.delete('/api/notes/:id', (req, res) => {
 
+  // get the id of the note from the DELETE request
   var noteId = req.params.id
+  // get the current notes in the db
   var notes = getNotes();
+  // find the note to delete
   var noteToDelete = notes.filter(function(item) { return item.id === noteId; });
+  // get the index of the note in the notes array
   var index = notes.findIndex(function(item, i) {
     return item.id === noteId
   });
 
+  // remove the note from the current array of notes
   if (index > -1) {
     notes.splice(index, 1);
   }
 
+  // save the updated notes back to the db
   saveNotes(notes);
 
+  // return a success response
   const response = {
     status: 'success',
     body: noteToDelete,
