@@ -12,14 +12,14 @@
 7. [Questions](#questions)
 
 ## Description
-This project uses Node, Express and JavaScript. It provides an Express server which handles requests in support of a note writing/saving application. The front-end provides a UI to View, Add and Save notes.
+This is an application for taking notes. The project uses Node, Express and JavaScript. It provides an Express server which handles requests in support of a note writing/saving application. The front-end provides a UI to View, Add, and Delete notes.
 
 ## Installation
 npm install
 
 ## Usage
 Execute 'node server.js' to start up Express server. Then open a browser and navigate to http://localhost:3001/
-Next, clisch "get Started" button and use interface to view existing and add new notes.
+Next, click on the "Get Started" button and use interface to view existing, add new, ad delete notes.
 ## Contributing
 Please contribute to this project:
 * [Submit bugs and feature requests](https://github.com/lstillwe/note-taker/issues), and help us verify as they are checked in
